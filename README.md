@@ -8,26 +8,46 @@ defines a route, `/auth`, which is the entry point.
 
 For these examples, we will be using the shared secret `foxtrot` and the
 endpoint `http://localhost:5000/auth`. These custom auth config options are
-specified in **User Auth** settings in [apps.ionic.io](https://apps.ionic.io)
-under **Custom**.
+specified in [apps.ionic.io](https://apps.ionic.io).
 
-For testing purposes, after booting up one of the examples, you can simulate a
-request from Ionic Auth with this URL (be aware of browsers caching redirects):
+![custom auth setup](https://cloud.githubusercontent.com/assets/236501/13647355/53742d08-e5f9-11e5-918f-86a43f44a88b.png)
 
-    http://localhost:5000/auth?redirect_uri=https%3A%2F%2Fionic.io&state=abcd&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InlvdXJfZGF0YSI6dHJ1ZSwidXNlcm5hbWUiOiJkYW4iLCJwYXNzd29yZCI6IjEyMyJ9LCJhcHBfaWQiOiJ5b3VyX2FwcF9pZCIsImV4cCI6MjAwMDAwMDAwMH0.eFTjndCStK3D7M3IMHy0nW1OaS4HZkJCdoGu9Jr2vQA
+Use the included nodejs script to generate the URL to start the authentication
+process.
 
-The token (when successfully decoded) has the payload:
-
-```json
-    {
-        "your_data": true,
-        "username": "dan",
-        "password": "123"
-    }
+```bash
+$ node genurl.js <YOUR_APP_ID>
 ```
 
-You will find that the `redirect_uri` is `https://ionic.io`, which means that
-upon successful authentication, you will be redirected to Ionic's homepage.
+Boot up your preferred example. For nodejs:
 
-Documentation for custom authentication can be found
+```bash
+$ node express/server.js
+```
+
+Copy the generated URL from the genurl.js script into curl or a tool like
+[postman](https://www.getpostman.com/).
+
+```bash
+curl -L -X POST "<GENERATED_URL>"
+```
+
+The token (when successfully decoded) has the following payload, but you can
+alter `genurl.js` to change what gets sent to your server.
+
+```json
+{
+    "username": "dan",
+    "password": "123"
+}
+```
+
+Upon successful authentication, you should get a JSON response with the message
+`You have successfully implemented custom authentication!` in it.
+
+Then you can look in your users list and see your authenticated, created user.
+
+![users list](https://cloud.githubusercontent.com/assets/236501/13648838/6e09216c-e600-11e5-8911-67b7676117f5.png)
+
+Further documentation for custom authentication can be found
 [here](http://docs.ionic.io/docs/custom-authentication).
