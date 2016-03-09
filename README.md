@@ -18,11 +18,13 @@ request from Ionic Auth with this URL (be aware of browsers caching redirects):
 
 The token (when successfully decoded) has the payload:
 
+```json
     {
         "your_data": true,
         "username": "dan",
         "password": "123"
     }
+```
 
 You will find that the `redirect_uri` is `https://ionic.io`, which means that
 upon successful authentication, you will be redirected to Ionic's homepage.
