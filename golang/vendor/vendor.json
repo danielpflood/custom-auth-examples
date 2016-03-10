@@ -1,0 +1,11 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "afef698c326bfd906b11659432544e5aae441d44",
+			"revisionTime": "2015-12-30T10:00:00-08:00"
+		}
+	]
+}
