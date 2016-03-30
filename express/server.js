@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken');
 
 var app = express();
 
-app.post('/auth', function(req, res) {
+app.get('/auth', function(req, res) {
   // request received from Ionic Auth
   var mySharedSecret = 'foxtrot';
   var redirectUri = req.query.redirect_uri;

@@ -16,6 +16,12 @@ func auth(w http.ResponseWriter, req *http.Request) {
 		userId   string
 	)
 
+	if req.Method != "GET" {
+		w.WriteHeader(415)
+		io.WriteString(w, "method not allowed (try GET)")
+		return
+	}
+
 	mySharedSecret := []byte("foxtrot")
 	queryParams := req.URL.Query()
 

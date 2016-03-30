@@ -8,7 +8,7 @@ from flask import Flask, abort, redirect, request
 
 app = Flask(__name__)
 
-@app.route('/auth', methods=['POST'])
+@app.route('/auth', methods=['GET'])
 def auth():
     # request received from Ionic Auth
     my_shared_secret = 'foxtrot'
