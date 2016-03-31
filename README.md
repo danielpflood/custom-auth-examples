@@ -29,7 +29,7 @@ Copy the generated URL from the genurl.js script into curl or a tool like
 [postman](https://www.getpostman.com/).
 
 ```bash
-curl -L -X POST "<GENERATED_URL>"
+curl -L -X GET "<GENERATED_URL>"
 ```
 
 The token (when successfully decoded) has the following payload, but you can
