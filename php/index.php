@@ -14,5 +14,3 @@ Flight::route('/auth',function () {
 });
 
 Flight::start();
-
-?>

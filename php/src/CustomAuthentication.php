@@ -58,5 +58,3 @@ class CustomAuthentication {
     }
     const APP_ID = "<YOUR APP ID>";
 }
-
-?>
