@@ -6,19 +6,32 @@ use Firebase\JWT\JWT;
 
 class CustomAuthentication {
     /**
+     * @param string GET parameter token.
+     * @param string GET parameter state.
      * @return string Redirect URI.
      * @throws \Exception
      */
-    public static function process() {
-        $request = JWT::decode($_GET['token'], static::getSecret(), ["HS256"]);
+    public static function process($token, $state) {
+        $request = JWT::decode($token, static::SECRET, ["HS256"]);
 
         static::validateResponse($request);
 
-        $user_id = static::signIn($request->data->username, $request->data->password);
+        $credentials = [
+            'username' => 'Username',
+            'password' => 'Password',
+            'user_id' => 1
+        ];
 
-        $token = JWT::encode(['user_id' => $user_id], static::getSecret());
+        // TODO: Authenticate your own real users here
+        if ($request->data->username != $credentials['username'] || $request->data->password != $credentials['password']) {
+            throw new \Exception('Invalid credentials.');
+        } else {
+            $user_id = $credentials['user_id'];
+        }
 
-        $redirect_uri = $_GET['redirect_uri'].'&token='.urlencode($token).'&state='.$_GET['state'];
+        $token = JWT::encode(['user_id' => $user_id], static::SECRET);
+
+        $redirect_uri = $_GET['redirect_uri'].'&token='.urlencode($token).'&state='.$state;
 
         return $redirect_uri;
     }
@@ -32,29 +45,6 @@ class CustomAuthentication {
         }
     }
 
-    /**
-     * @param $username
-     * @param $password
-     * @return mixed
-     * @throws \Exception
-     */
-    public static function signIn($username, $password) {
-        $credentials = [
-            'username' => 'Username',
-            'password' => 'Password',
-            'user_id' => 1
-        ];
-
-        if ($username == $credentials['username']) {
-            if ($password == $credentials['password']) {
-                return $credentials['user_id'];
-            }
-        }
-        throw new \Exception('Invalid credentials.');
-    }
-
-    public static function getSecret() {
-        return 'Foxtrot';
-    }
+    const SECRET = "Foxtrot";
     const APP_ID = "<YOUR APP ID>";
 }
