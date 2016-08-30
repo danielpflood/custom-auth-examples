@@ -8,10 +8,11 @@ class CustomAuthentication {
     /**
      * @param string GET parameter token.
      * @param string GET parameter state.
+     * @param string GET parameter redirect uri.
      * @return string Redirect URI.
      * @throws \Exception
      */
-    public static function process($token, $state) {
+    public static function process($token, $state, $redirect_uri) {
         $request = JWT::decode($token, static::SECRET, ["HS256"]);
 
         static::validateResponse($request);
@@ -31,7 +32,7 @@ class CustomAuthentication {
 
         $token = JWT::encode(['user_id' => $user_id], static::SECRET);
 
-        $redirect_uri = $_GET['redirect_uri'].'&token='.urlencode($token).'&state='.$state;
+        $redirect_uri = $redirect_uri.'&token='.urlencode($token).'&state='.$state;
 
         return $redirect_uri;
     }
