@@ -19,6 +19,6 @@ Start the server:
 $ php -S localhost:8000 routing.php
 ```
 
-For testing you can use follow this [link](http://localhost:8000/auth?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiVXNlcm5hbWUiLCJwYXNzd29yZCI6IlBhc3N3b3JkIn0sImV4cCI6MjQ3MjIxNjQ0NywiYXBwX2lkIjoiPFlPVVIgQVBQIElEPiJ9.J7nG8iM2eschTAjG882QBO-FXcO8hlwkkTGyB-hdS5k&redirect_uri=https://api.ionic.io/auth/integrations/custom?app_id=f028dfca). 
+For testing you can use follow this [link](http://localhost:8000/auth?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiVXNlcm5hbWUiLCJwYXNzd29yZCI6IlBhc3N3b3JkIn0sImV4cCI6MjQ3MjIxNjQ0NywiYXBwX2lkIjoiPFlPVVIgQVBQIElEPiJ9.J7nG8iM2eschTAjG882QBO-FXcO8hlwkkTGyB-hdS5k&redirect_uri=https://api.ionic.io/auth/integrations/custom?app_id=f028dfca&state=123ABC). 
 You should receive a 400 error, this at least means things are setup properly,
 you just don't have a real token being sent. 
