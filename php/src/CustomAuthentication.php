@@ -17,8 +17,8 @@ class CustomAuthentication {
         static::validateResponse($request);
 
         $credentials = [
-            'username' => 'Username',
-            'password' => 'Password',
+            'username' => 'dan',
+            'password' => '123',
             'user_id' => 1
         ];
 
@@ -45,6 +45,6 @@ class CustomAuthentication {
         }
     }
 
-    const SECRET = "Foxtrot";
+    const SECRET = "foxtrot";
     const APP_ID = "<YOUR APP ID>";
 }
