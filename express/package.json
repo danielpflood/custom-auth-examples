@@ -1,7 +1,7 @@
 {
   "name": "custom-auth-examples",
   "version": "0.0.0",
-  "description": "This php example will get you up and running using Ionic Auth with your own server backend.",
+  "description": "This express example will get you up and running using Ionic Auth with your own server backend in nodejs.",
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.4",
