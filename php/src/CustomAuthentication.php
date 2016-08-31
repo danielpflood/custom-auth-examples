@@ -38,14 +38,10 @@ class CustomAuthentication {
     }
 
     static function validateResponse($response) {
-        if (strcmp($response->app_id, static::APP_ID) !== 0) {
-            throw new \Exception('APP_ID ('.$response->app_id.') did not match expected APP_ID.');
-        }
         if ($response->exp < time()) {
             throw new \Exception('Token expired. ('.$response->exp.' < '.time().')');
         }
     }
 
     const SECRET = "foxtrot";
-    const APP_ID = "<YOUR APP ID>";
 }
