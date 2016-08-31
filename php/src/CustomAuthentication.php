@@ -20,7 +20,7 @@ class CustomAuthentication {
         $credentials = [
             'username' => 'dan',
             'password' => '123',
-            'user_id' => "1"
+            'user_id' => "user-from-php"
         ];
 
         // TODO: Authenticate your own real users here
@@ -32,7 +32,12 @@ class CustomAuthentication {
 
         $token = JWT::encode(['user_id' => $user_id], static::SECRET);
 
-        $redirect_uri = $redirect_uri.'&token='.urlencode($token).'&state='.$state;
+        $redirect_uri = $redirect_uri . '&' . http_build_query([
+            'token' => $token,
+            'state' => $state,
+            # TODO: Take out the redirect_uri parameter before production
+            'redirect_uri' => 'https://api.ionic.io/auth/integrations/custom/success',
+        ]);
 
         return $redirect_uri;
     }
