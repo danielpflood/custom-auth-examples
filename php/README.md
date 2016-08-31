@@ -7,7 +7,7 @@ for routing but it should be very simple to use your own.
 We are using the [firebase/php-jwt](https://github.com/firebase/php-jwt) package 
 to work with JWTs from the Ionic API.
 
-Install the dependencies:
+Install the dependencies (see [composer docs](https://getcomposer.org/)):
 
 ```bash
 $ composer install
