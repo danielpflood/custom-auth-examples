@@ -1,0 +1,30 @@
+{
+    "name": "custom-auth-examples",
+    "version": "0.0.0",
+    "description": "This php example will get you up and running using Ionic Auth with your own server backend.",
+    "authors": [
+        {
+            "name": "wcatron",
+            "email": "wcatron@catrondevelopment.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^4.0",
+        "mikecao/flight": "^1.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/driftyco/custom-auth-examples.git"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ionic\\": "src"
+        }
+    },
+    "author": "hi@ionic.io",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/driftyco/custom-auth-examples/issues"
+    },
+    "homepage": "https://github.com/driftyco/custom-auth-examples#readme"
+}
