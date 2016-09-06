@@ -2,6 +2,7 @@
 
 namespace Ionic;
 
+use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 
 class CustomAuthentication {
@@ -11,11 +12,10 @@ class CustomAuthentication {
      * @param string GET parameter redirect uri.
      * @return string Redirect URI.
      * @throws \Exception
+     * @throws ExpiredException
      */
     public static function process($token, $state, $redirect_uri) {
         $request = JWT::decode($token, static::SECRET, ["HS256"]);
-
-        static::validateResponse($request);
 
         $credentials = [
             'username' => 'dan',
@@ -40,12 +40,6 @@ class CustomAuthentication {
         ]);
 
         return $redirect_uri;
-    }
-
-    static function validateResponse($response) {
-        if ($response->exp < time()) {
-            throw new \Exception('Token expired. ('.$response->exp.' < '.time().')');
-        }
     }
 
     const SECRET = "foxtrot";
